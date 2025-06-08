@@ -1,0 +1,505 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #edeeee  ;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* padding: 6rem; */
+}
+
+.container1{
+    gap: 5vh;
+    width: 65vw;
+    max-width: 100%;
+    padding-bottom: 10vh;
+    /* height: 80vh; */
+    /* max-height: 100vh;  */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20vh;
+    margin-top: 8vh;
+    display: flex;
+    flex-direction: column; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-2xl equivalent */
+    border-radius: 40px;
+    background-color: #f6f6f6;
+}
+
+.heroA {
+    position: sticky;
+    top: 2vh; /* This is crucial: it defines where it sticks */
+    z-index: 1000; /* Ensures it stays on top of other content when sticky */
+    margin-top: 4vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255, 255, 255,0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 6vh;
+    border-radius: 20px;
+    width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* 👈 Pushes items to far left and far right */
+  align-items: center; /* Optional: vertically center the images */
+  padding: 0 20px 0 5px;      /* Optional: spacing from edges */
+}
+
+.logo
+{
+    cursor: pointer;
+    width: 150px;     /* or 24px, 40px, etc. depending on how small you want it */
+  height: 6vh;
+  object-fit: contain;
+}
+.menu
+{
+  width: 30px;     /* or 24px, 40px, etc. depending on how small you want it */
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer; 
+        transition: transform 0.2s ease-in-out;
+}
+.menu:hover
+{
+  transform: scale(1.15);
+}
+.heroB {
+    /* margin-top: 8vh; */
+    margin: 8vh 12vh;
+    display: flex;
+    flex-direction: column; /* CHANGE THIS FROM row to column */
+    /* Remove justify-content: space-between; if you want vertical stacking */
+    /* justify-content: space-between; */ /* You might not need this here if you want vertical stacking of sections */
+    gap: 5vh; /* Add some space between heroB-box1 and heroC */
+}
+
+.heroB-box1 {
+    display: flex;
+    flex-direction: row;
+    /* height: 50vh; */ /* REMOVE THIS FIXED HEIGHT */
+    /* justify-content: space-between; */
+}
+.left1  {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* justify-content: space-between; */
+}
+.right1 {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 2vh;
+    width: 50%;
+    padding: 20px;
+}
+.right1-top
+{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+.right1-bottom
+{
+    display: flex;
+    flex-direction: row;
+
+}
+.available-box
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    /* gap: 10px; */
+    background-color: #dcedec;   /* deep black or use #000 for pure black */
+    border: none;
+    padding: 10px 10px;
+    border-radius: 9999px;       /* pill shape */
+    /* font-style: 'Inter', sans-serif; */
+    gap: 0.5rem;
+}
+.available-box p
+{
+    font-family: 'Inter';
+    font-size: 0.9rem;
+    color: #53a4ae;
+}
+.available-box img
+{
+    
+    width: 10px;
+    height: 10px;
+}
+.heading h1
+{
+    font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
+    font-size: 3.5rem;
+    line-height: 6.5vh;
+}
+
+.heading-text span
+{
+    color: #c22421;
+}
+
+.heading-para
+{
+    font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
+    font-size: 0.8rem;
+    color: #6b6b6b;
+}
+.contact-btn button
+{
+    background-color: #1a1a1a;   /* deep black or use #000 for pure black */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 9999px;       /* pill shape */
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.right1-top
+{
+    background-color: #ffff;
+    border-radius: 20px;
+}
+.right1-top-left
+{
+
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 40%;
+    
+    /* margin-bottom: 2vh; */
+}
+.nameText {
+    font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
+    width: 80%;
+    line-height: 2.5vh;
+     padding-top: 2.5vh; /*Removed, handled by parent padding/gap */
+    /* padding-left: 0.5vw; Removed, handled by parent padding */
+    text-align: left; /* Ensure text is left-aligned */
+}
+.nameText h3
+{
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.nameText p
+{
+    color: #898989;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+.progIcons
+{
+    transform: scale(0.8);
+    transform-origin: center;
+    display: flex;
+    margin-right: auto;
+    width: 90%;
+    flex-wrap: wrap; /* allow wrapping to next row */
+    justify-content: center; /* or space-between / flex-start */
+    gap: 10px;
+    
+}
+
+.progIcons img
+{
+    width: 45px;    /*-------------*/ 
+    height: 45px;
+    object-fit: contain;
+}
+
+#oracle
+{
+    width: 97px;
+}
+#java
+{
+    padding-right: 8px;
+    width: 3.8rem;
+    height: 3.8rem;
+}
+#bootstrap, #springBoot, #react
+{
+    /* padding-right: 10px; */
+    padding-left: 10px;
+    
+    width: 49px;     
+    height: 49px;
+}
+
+
+.right1-top-right
+{
+    width: 60%;
+    margin: 0px;
+    /* width: 10vw; */
+    /* width: 500%;
+    height: 500%; */
+    
+}
+.right1-top-right img
+{
+    
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.35) 0px 2px 16px 0px;
+    float: right;
+    width: 100%;
+    height: 100%; 
+    object-fit:contain;
+    border-radius: 20px;
+}
+.right1-bottom
+{
+    align-items: center;
+    gap: 10px;
+}
+.blue-box
+{  
+    width: 90%;
+    height: 110px;
+     background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #3baae3);
+     border-radius: 20px;
+                                                     /*--EXTRA---------------------------------------------------------------------------------------------*/
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width/height */
+    overflow: hidden; /* This is crucial for the scrolling effect */
+                                                    /*--EXTRA---------------------------------------------------------------------------------------------*/
+
+}
+.articles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px; /* Space between header and list */
+    font-family: 'DM Sans', sans-serif;
+}
+
+.articles-header h4 {
+    font-weight: 700;
+    color: #0c3e5e;
+    font-size: 1rem;
+}
+
+/* The viewport that clips the scrolling list */
+/* .articles-viewport {
+    flex-grow: 1;
+    position: relative;
+} */
+
+/* The list that will be animated */
+/* .article-list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    
+} */
+
+.article-list li {
+    height: 25px; /* Each article gets this much height */
+    display: flex;
+    align-items: center;
+}
+
+.article-list li a {
+    text-decoration: none;
+    color: #0b4a6f;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    white-space: nowrap; /* Prevents long titles from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds '...' if title is too long */
+    width: 100%;
+    transition: color 0.3s ease;
+}
+
+.article-list li a:hover {
+    color: #c22421; /* Highlight color on hover */
+}
+                                                    /*--EXTRA---------------------------------------------------------------------------------------------*/
+.social-icons {
+    
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    transition: padding 0.1s ease-in-out;
+}
+.social-icons img:hover {
+    transition: 0.5s;
+    width: 3.2rem;
+    height: 3.2rem;
+    /* object-fit:fill; */
+    /* background-color: white; */
+    border-radius: 50%;
+    padding: 0px; 
+}
+
+.heroC
+{
+    width: 100%;
+    padding: 0px 120Px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* gap: 3vw; */
+}
+
+.assist-sidebar
+{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+    align-items: flex-start;
+    width: 20%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    /* font-size: 2rem; */
+}
+.assist-sidebar aside p { /* More specific selector to ensure it overrides */
+    font-family: 'DM Sans', sans-serif; /* Keep your preferred font */
+    font-size: 2rem; /* Make it prominently large, adjust as needed */
+    font-weight: 500; /* Bold */
+    color: #1a1a1a; /* Dark text */
+    line-height: 1.2; /* Good for multi-line headings */
+    margin: 0; /* Remove any default paragraph margins that might push it */
+    padding: 0; /* Remove any default paragraph padding */
+}
+
+.assist-options
+{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    align-items: start;
+    width: 80%;
+}
+.assist-box
+{
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+     width: 90%;
+    height: 15vh;
+    min-height: 150px;
+     background: white;
+     border-radius: 20px;
+     padding: 20px; 
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+     
+}
+.assist-box:hover
+{
+     transform: translateY(-8px);
+box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+                rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+                rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;    
+}
+
+.assist-box-top
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+.assist-box-top-left
+{
+    /* width: 40%; */
+    flex-shrink: 0;
+}
+.assist-box-top img
+{
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain; /* Ensure icons don't distort */
+    background-color: #dedbfc;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: padding 0.1s ease-in-out;
+}
+.assist-box:hover .assist-box-top img {
+    background-color: #c7b0f0; /* A slightly darker or different shade on hover */
+    transform: scale(1.1); /* Slightly enlarge the circular background */
+    box-shadow: 0 0 15px rgba(175, 150, 220, 0.5); /* A subtle glow/shadow */
+}
+.assist-box-top-right p
+{
+    font-size: 0.87rem;
+    color: #6b6b6b;
+    transition: color 0.3s ease-in-out;
+}
+.assist-box:hover .assist-box-top-right p {
+    color: #333; /* Darker text color on hover */
+}
+.assist-box-bottom
+{
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
+}
+.assist-box:hover .assist-box-bottom .bottom-heading {
+    color: #007bff; /* Example: a blue accent color */
+    font-weight: 600; /* Slightly bolder */
+}
+/* .assist-box-bottom 
+{
+    float:left;
+    
+    
+} */
+/* .heroD
+{
+    
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    height: 6vh;
+    border-radius: 20px;
+    width: 80%;
+    align-items: center; /* Optional: vertically center the images */
+  /* padding: 0px 120Px;
+  padding-left: 80px; */
