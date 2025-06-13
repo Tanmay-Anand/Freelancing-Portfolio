@@ -39,7 +39,7 @@ body {
 
 .container1 {
   gap: 2vh;
-  width: 65vw;
+  /* width: 65vw; */
   max-width: 100%;
   padding-top: 3vh;
   padding-bottom: 50px;
@@ -200,7 +200,7 @@ backdrop-filter: blur(42px);
 {
     width: 90%;
     font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #6b6b6b;
 }
 /* From Uiverse.io by KINGFRESS */ 
@@ -919,7 +919,7 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
 
 .container-wrapper {
   position: relative; /* Crucial for positioning container2 relative to this wrapper */
-  width: 65vw; /* Match container1's width */
+  width: 70vw; /* Match container1's width */
   margin-left: auto;
   margin-right: auto;
   margin-top: 8vh; /* Start wrapper where container1 starts */
