@@ -17,7 +17,18 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #d5ebff  ;
+    /* background-color: #d5ebff  ; */
+     width: 100%;
+  height: 100%;
+  background: radial-gradient(
+   125% 125% at -2% 101%,
+  #a35a2c 10.5%,     /* warm cocoa */
+  #d28f5d 25%,       /* muted tan */
+  #e5b174 40%,       /* amber sand */
+  #d4cec4 60%,       /* soft bone white */
+  #9bb5c2 80%,       /* desaturated blue-gray */
+  #6299ad 100%       /* slate blue */
+  );
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,27 +37,28 @@ body {
     /* padding: 6rem; */
 }
 
-.container1{
-    gap: 5vh;
-    width: 65vw;
-    max-width: 100%;
-    padding-bottom: 50px;
-    /* height: 80vh; */
-    /* max-height: 100vh;  */
-    margin-left: auto;
-    margin-right: auto;
-    /* margin-bottom: 20vh; */
-    margin-top: 8vh;
-    display: flex;
-    flex-direction: column; 
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-2xl equivalent */
-    border-radius: 40px;
-    background-color: #efefef;
-    position: relative; /* Needed if you have elements inside container1 that need positioning */
-  z-index: 2; /* Ensure container1 is above container2 */
-  
+.container1 {
+  gap: 2vh;
+  width: 65vw;
+  max-width: 100%;
+  padding-top: 3vh;
+  padding-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 40px;
+  background-color: rgba(239, 239, 239, 0.6); /* slight transparency */
+  position: relative;
+  z-index: 2;
   box-sizing: border-box;
+  background-color: rgba(239, 239, 239, 0.6);
+backdrop-filter: blur(42px);
 }
+
 
 .heroA {
     position: sticky;
@@ -929,6 +941,7 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
   box-sizing: border-box;
   color: #f0f0f0;
   text-align: center; 
+  
 }
 .footer-content {
     display: flex;
