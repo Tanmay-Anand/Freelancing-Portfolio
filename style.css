@@ -7,11 +7,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 1s ease-in linear;
+    
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #edeeee  ;
+    background-color: #d5ebff  ;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,18 +30,22 @@ body {
     gap: 5vh;
     width: 65vw;
     max-width: 100%;
-    padding-bottom: 10vh;
+    padding-bottom: 50px;
     /* height: 80vh; */
     /* max-height: 100vh;  */
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20vh;
+    /* margin-bottom: 20vh; */
     margin-top: 8vh;
     display: flex;
     flex-direction: column; 
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-2xl equivalent */
     border-radius: 40px;
-    background-color: #f6f6f6;
+    background-color: #efefef;
+    position: relative; /* Needed if you have elements inside container1 that need positioning */
+  z-index: 2; /* Ensure container1 is above container2 */
+  
+  box-sizing: border-box;
 }
 
 .heroA {
@@ -122,23 +132,39 @@ body {
 }
 .available-box
 {
+    animation: float2 5s infinite linear;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: fit-content;
     /* gap: 10px; */
-    background-color: #dcedec;   /* deep black or use #000 for pure black */
+    background-color: #94d2bd;   /* deep black or use #000 for pure black */
     border: none;
     padding: 10px 10px;
     border-radius: 9999px;       /* pill shape */
     /* font-style: 'Inter', sans-serif; */
     gap: 0.5rem;
+    cursor: pointer;
+}
+@keyframes float2 {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-2.5px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
 }
 .available-box p
 {
     font-family: 'Inter';
     font-size: 0.9rem;
-    color: #53a4ae;
+    color: #4c959e;
 }
 .available-box img
 {
@@ -160,31 +186,86 @@ body {
 
 .heading-para
 {
+    width: 90%;
     font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
     font-size: 0.8rem;
     color: #6b6b6b;
 }
-.contact-btn button
-{
-    background-color: #1a1a1a;   /* deep black or use #000 for pure black */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 9999px;       /* pill shape */
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
+/* From Uiverse.io by KINGFRESS */ 
+/* From Uiverse.io by BHARGAVPATEL1244 */ 
+button {
+ outline: none;
+ cursor: pointer;
+ border: none;
+ padding: 10px 15px;
+ margin: 0;
+ font-family: inherit;
+ font-size: inherit;
+ position: relative;
+ display: inline-block;
+ letter-spacing: 0.05rem;
+ font-weight: bold;
+ font-size: 17px;
+ border-radius: 500px;
+ overflow: hidden;
+ background: #53b4e6;
+ color: ghostwhite;
 }
+
+button span {
+ position: relative;
+ z-index: 10;
+ transition: color 0.4s;
+}
+
+button:hover span {
+ color: black;
+}
+
+button::before,
+button::after {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 0;
+}
+
+button::before {
+ content: "";
+ background: #000;
+ width: 120%;
+ left: -10%;
+ transform: skew(30deg);
+ transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+button:hover::before {
+ transform: translate3d(100%, 0, 0);
+}
+
+
 
 .right1-top
 {
+    /* animation: slideInFromRight 1.5s ease forwards; */
     background-color: #ffff;
     border-radius: 20px;
 }
+/* @keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+} */
 .right1-top-left
 {
-
+    animation: slideUp 1s ease-out forwards;
     /* box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; */
     display: flex;
     flex-direction: column;
@@ -195,6 +276,24 @@ body {
     
     /* margin-bottom: 2vh; */
 }
+@keyframes slideUp {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateX(80%);
+        opacity: 0;
+    }
+    75% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 .nameText {
     font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
     width: 80%;
@@ -202,6 +301,7 @@ body {
      padding-top: 2.5vh; /*Removed, handled by parent padding/gap */
     /* padding-left: 0.5vw; Removed, handled by parent padding */
     text-align: left; /* Ensure text is left-aligned */
+    animation: slideUp 1.5s ease-out forwards;
 }
 .nameText h3
 {
@@ -266,12 +366,13 @@ body {
 .right1-top-right img
 {
     
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.35) 0px 2px 16px 0px;
-    float: right;
+box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%; 
-    object-fit:contain;
+    object-fit:cover;
     border-radius: 20px;
+    position: relative;  /* Or absolute/fixed, depending on layout */
+    z-index: 10;
 }
 .right1-bottom
 {
@@ -280,6 +381,7 @@ body {
 }
 .blue-box
 {  
+    animation: slideUp3 1s ease-out forwards;
     width: 90%;
     height: 110px;
      background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #3baae3);
@@ -292,6 +394,35 @@ body {
     overflow: hidden; /* This is crucial for the scrolling effect */
                                                     /*--EXTRA---------------------------------------------------------------------------------------------*/
 
+}
+
+.blue-box:hover
+{  
+    transition: 5s ease;
+    opacity: 0.5;
+     background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #78c6ec);
+     border-radius: 20px;
+                                                     /*--EXTRA---------------------------------------------------------------------------------------------*/                                                    /*--EXTRA---------------------------------------------------------------------------------------------*/
+
+}
+
+@keyframes slideUp3 {
+    0% {
+        transform: translateX(100%) translateY(-100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateX(80%) translateY(-80%);
+        opacity: 0;
+    }
+    75% {
+        transform: translateX(50%) translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
 }
 .articles-header {
     display: flex;
@@ -342,15 +473,34 @@ body {
 }
 
 .article-list li a:hover {
+    font-weight: 700;
     color: #c22421; /* Highlight color on hover */
 }
                                                     /*--EXTRA---------------------------------------------------------------------------------------------*/
 .social-icons {
-    
+    animation: slideUp2 1s ease-out forwards;
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 20px;
     justify-content: center;
+}
+@keyframes slideUp2 {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateY(-80%);
+        opacity: 0;
+    }
+    75% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .social-icons img {
@@ -372,6 +522,151 @@ body {
     border-radius: 50%;
     padding: 0px; 
 }
+.heroD {
+            width: 100%;
+    padding: 0px 120Px;
+            display: flex;
+            flex-direction: column; /* Default to column for small screens */
+            /* justify-content: space-between; */
+            align-items: flex-start;
+            
+            margin-bottom: 10vh;
+            max-width: 1200px; /* Max width to prevent it from stretching too wide */
+            /* margin-left: auto; 
+            margin-right: auto;  */
+        }
+.hero-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 14px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    /* border: 5px solid #fff; */
+    transition: transform 0.3s ease;
+}
+.hero-img:hover {
+    transform: scale(1.05);
+    box-shadow: rgb(38, 57, 77) 0px 30px 50px -10px;
+}
+.hero-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.hero-img:hover img {
+    transform: scale(1.05);
+}
+
+.hero-img .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.4s ease;
+}
+
+.hero-img:hover .overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    color: white;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.hero-img:hover .caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.caption h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.caption .description {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 300;
+}
+        /* Styling for the "Sample Projects" text */
+        .heroD-sample p {
+           font-family: 'DM Sans', sans-serif; /* Keep your preferred font */
+    font-size: 2rem; /* Make it prominently large, adjust as needed */
+    font-weight: 500; /* Bold */
+    color: #1a1a1a; /* Dark text */
+    line-height: 1.2; /* Good for multi-line headings */
+    margin: 0; /* Remove any default paragraph margins that might push it */
+    padding: 0;  /* Center the text on small screens */
+        }
+
+        /* Wrapper for the sample images */
+        .heroD-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    /* margin-top: 2rem; */
+}
+.heroD-sample
+{
+    padding-left: 0.5vw;
+    border-left: 3px solid red;
+    width: 20%;
+}
+        /* Styling for individual images within the wrapper */
+        .heroD-wrapper img {
+            width: 20vw; /* Image fills its grid cell */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            border-radius: 8px; /* Slightly rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            object-fit: cover; /* Ensure image covers the area, cropping if necessary */
+        }
+
+        /* Media query for larger screens (e.g., tablets and desktops) */
+        @media (min-width: 768px) {
+            .heroD {
+                flex-direction: row; /* Switch to row layout for larger screens */
+                padding: 0 80px; /* Adjust horizontal padding for larger screens */
+                /* gap: 50px;  */
+            }
+
+            .heroD-sample p {
+                font-size: 2rem; /* Larger font size for desktop */
+                text-align: left; /* Align text left on larger screens */
+                width: auto; /* Allow content to dictate width */
+            }
+
+            .heroD-wrapper {
+                grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+                gap: 30px; /* Maintain equal gap for 2 columns */
+                width: 75%; /* Give more space to images relative to text */
+            }
+        }
+
+        /* Even larger screens for slightly more padding */
+        @media (min-width: 1024px) {
+            .heroD {
+                padding: 0 120px; /* Original padding for very large screens */
+            }
+        }
+/* ============== */
+
+/* ============== */
 
 .heroC
 {
@@ -381,6 +676,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    padding-bottom: 6vh;
     /* gap: 3vw; */
 }
 
@@ -403,6 +699,9 @@ body {
     line-height: 1.2; /* Good for multi-line headings */
     margin: 0; /* Remove any default paragraph margins that might push it */
     padding: 0; /* Remove any default paragraph padding */
+    border-left: 3px solid red;
+    width: 70%;
+    padding-left: 0.5vw;
 }
 
 .assist-options
@@ -485,6 +784,236 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
     color: #007bff; /* Example: a blue accent color */
     font-weight: 600; /* Slightly bolder */
 }
+
+.side-icons {
+  position: fixed;
+  bottom: 4vw;
+  right: 4vw;
+  z-index: 1000;
+}
+
+.gmail-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #2f2f2f; /* Dark grey background */
+  border-radius: 50%;         /* Circle shape */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: transform 0.4s ease;
+  animation: float 5s ease-in-out infinite;
+  text-decoration: none;
+  overflow: hidden; /* ensures icon stays inside the circle */
+}
+
+.gmail-icon:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9); /* Slightly deeper shadow on hover */
+}
+
+.gmail-icon img {
+  width: 65%;
+  height: 65%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gmail-icon:hover img {
+  transform: scale(1.15);
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px) translateX(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+        .hero-img figcaption span
+        {
+            color: red;
+        }
+
+
+        .btn-wrapper
+        {
+            display: flex;
+            flex-direction: row;
+            gap: 1vw;
+        }
+/* From Uiverse.io by adamgiebl */ 
+.cssbuttons-io-button {
+  background: #a370f0;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 9999px;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.container-wrapper {
+  position: relative; /* Crucial for positioning container2 relative to this wrapper */
+  width: 65vw; /* Match container1's width */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8vh; /* Start wrapper where container1 starts */
+  margin-bottom: 35vh; /* Adjust as needed for overall spacing */
+}
+
+.container2 {
+  position: absolute;
+  top: calc(100% - 40px); /* This is the magic! 100% is bottom of container1, 40px is border-radius */
+  left: 0;
+  width: 100%; /* Match container1's width */
+  background-color: #111111; /* Different color to distinguish */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-bottom-left-radius: 40px; /* Match container1's bottom radius */
+  border-bottom-right-radius: 40px; /* Match container1's bottom radius */
+  z-index: 1; /* Ensure container2 is below container1 */
+  padding: 20px;
+  padding-top: 80px;
+  box-sizing: border-box;
+  color: #f0f0f0;
+  text-align: center; 
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within flex container */
+    justify-content: center;
+    align-content: center;
+    gap: 15px; /* Spacing between sections */
+    align-items: center;
+  }
+
+  .footer-heading {
+    font-size: 1.5rem; /* Larger heading */
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+  }
+
+  .contact-list {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack contact items */
+    gap: 10px; /* Space between each contact item */
+    align-items: center;
+  }
+
+  .contact-list li {
+    margin: 0;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    color: #b0c4de; /* Softer light color for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: #e0f2f7; /* Lighter color on hover */
+  }
+
+  .contact-link .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .Source-code {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    align-items: center;
+  }
+  .Source-code a
+  {
+    font-size: 0.9rem;
+    color: #707070;
+  }
+  .Source-code a:hover {
+    
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 700;
+  }
+        /* .resume
+        {
+            border: 2px solid black;
+            display: flex;
+            flex-direction: row;
+            gap: 1vw;
+            align-items: center;
+            padding: 10px 15px;
+            font-size: 17px;
+             border-radius: 500px;
+        }
+
+        .resume img
+        {
+             width: 45px;   
+             height: 45px;
+        } */
 /* .assist-box-bottom 
 {
     float:left;
