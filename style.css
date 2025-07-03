@@ -309,21 +309,22 @@ button:hover::before {
 .nameText {
     font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
     width: 80%;
-    line-height: 2.5vh;
+    line-height: 3.5vh;
      padding-top: 2.5vh; /*Removed, handled by parent padding/gap */
     /* padding-left: 0.5vw; Removed, handled by parent padding */
     text-align: left; /* Ensure text is left-aligned */
     animation: slideUp 1.5s ease-out forwards;
+    
 }
 .nameText h3
 {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     font-weight: 500;
 }
 .nameText p
 {
     color: #898989;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 400;
 }
 .progIcons
@@ -676,6 +677,8 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
                 padding: 0 120px; /* Original padding for very large screens */
             }
         }
+
+  
 /* ============== */
 
 /* ============== */
@@ -810,26 +813,24 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
   justify-content: center;
   width: 60px;
   height: 60px;
-  background-color: #2f2f2f; /* Dark grey background */
-  border-radius: 50%;         /* Circle shape */
+  background-color: #2f2f2f;
+  border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
   cursor: pointer;
   transition: transform 0.4s ease;
   animation: float 5s ease-in-out infinite;
   text-decoration: none;
-  overflow: hidden; /* ensures icon stays inside the circle */
-}
-
-.gmail-icon:hover {
-  transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9); /* Slightly deeper shadow on hover */
+  overflow: hidden;
 }
 
 .gmail-icon img {
   width: 65%;
   height: 65%;
-  display: block;
-  transition: transform 0.4s ease;
+}
+
+.gmail-icon:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9);
 }
 
 .gmail-icon:hover img {
