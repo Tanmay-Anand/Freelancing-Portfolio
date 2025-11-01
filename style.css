@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: 1s ease-in linear;
+    /* transition: 1s ease-in linear; */
     
 }
 
@@ -40,6 +40,9 @@ body {
 .container1 {
   gap: 2vh;
   /* width: 65vw; */
+  width: 100%;
+  padding-top: 3vh;
+  padding-bottom: 50px;
   max-width: 100%;
   padding-top: 3vh;
   padding-bottom: 50px;
@@ -61,20 +64,20 @@ backdrop-filter: blur(42px);
 
 
 .heroA {
-    position: sticky;
+    /* position: sticky; */
     top: 2vh; /* This is crucial: it defines where it sticks */
     z-index: 1000; /* Ensures it stays on top of other content when sticky */
     margin-top: 4vh;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(255, 255, 255,0.4);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* background-color: rgb(255, 255, 255,0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     height: 6vh;
     border-radius: 20px;
     width: 95%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* 👈 Pushes items to far left and far right */
+  justify-content: center; 
   align-items: center; /* Optional: vertically center the images */
   padding: 0 20px 0 5px;      /* Optional: spacing from edges */
 }
@@ -98,9 +101,115 @@ backdrop-filter: blur(42px);
 {
   transform: scale(1.15);
 }
+/* From Uiverse.io by cbolson */ 
+.switch {
+  --_switch-bg-clr: #70a9c5;
+  --_switch-padding: 4px; /* padding around button*/
+  --_slider-bg-clr: rgba(12, 74, 110, 0.65); /* slider color unchecked */
+  --_slider-bg-clr-on: rgba(12, 74, 110, 1); /* slider color checked */
+  --_slider-txt-clr: #ffffff;
+  --_label-padding: 1rem 2rem; /* padding around the labels -  this gives the switch it's global width and height */
+  --_switch-easing: cubic-bezier(
+    0.47,
+    1.64,
+    0.41,
+    0.8
+  ); /* easing on toggle switch */
+  color: white;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+  isolation: isolate;
+}
+
+.switch input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.switch > span {
+  display: grid;
+  place-content: center;
+  transition: opacity 300ms ease-in-out 150ms;
+  padding: var(--_label-padding);
+}
+.switch::before,
+.switch::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  transition: inset 150ms ease-in-out;
+}
+/* switch slider */
+.switch::before {
+  background-color: var(--_slider-bg-clr);
+  inset: var(--_switch-padding) 50% var(--_switch-padding)
+    var(--_switch-padding);
+  transition:
+    inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  z-index: -1;
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.3),
+    0 1px rgba(255, 255, 255, 0.3);
+}
+/* switch bg color */
+.switch::after {
+  background-color: var(--_switch-bg-clr);
+  inset: 0;
+  z-index: -2;
+}
+/* switch hover & focus */
+.switch:focus-within::after {
+  inset: -0.25rem;
+}
+.switch:has(input:checked):hover > span:first-of-type,
+.switch:has(input:not(:checked)):hover > span:last-of-type {
+  opacity: 1;
+  transition-delay: 0ms;
+  transition-duration: 100ms;
+}
+/* switch hover */
+.switch:has(input:checked):hover::before {
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    45%;
+}
+.switch:has(input:not(:checked)):hover::before {
+  inset: var(--_switch-padding) 45% var(--_switch-padding)
+    var(--_switch-padding);
+}
+/* checked - move slider to right */
+.switch:has(input:checked)::before {
+  background-color: var(--_slider-bg-clr-on);
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    50%;
+}
+/* checked - set opacity */
+.switch > span:last-of-type,
+.switch > input:checked + span:first-of-type {
+  opacity: 0.75;
+}
+.switch > input:checked ~ span:last-of-type {
+  opacity: 1;
+}
+
+
 .heroB {
     /* margin-top: 8vh; */
-    margin: 8vh 12vh;
+    margin: 8vh 0;
+    padding: 0 4vw;
     display: flex;
     flex-direction: column; /* CHANGE THIS FROM row to column */
     /* Remove justify-content: space-between; if you want vertical stacking */
@@ -111,12 +220,13 @@ backdrop-filter: blur(42px);
 .heroB-box1 {
     display: flex;
     flex-direction: row;
+    gap: 40px;
     /* height: 50vh; */ /* REMOVE THIS FIXED HEIGHT */
     /* justify-content: space-between; */
 }
 .left1  {
-    width: 50%;
-    padding: 20px;
+    width: 55%;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -127,8 +237,8 @@ backdrop-filter: blur(42px);
     flex-direction: column;
     /* justify-content: space-between; */
     gap: 2vh;
-    width: 50%;
-    padding: 20px;
+    width: 45%;
+    padding: 0;
 }
 .right1-top
 {
@@ -138,6 +248,8 @@ backdrop-filter: blur(42px);
 }
 .right1-bottom
 {
+  /* justify-content: space-between; */
+  /* gap: 10px; */
     display: flex;
     flex-direction: row;
 
@@ -187,8 +299,8 @@ backdrop-filter: blur(42px);
 .heading h1
 {
     font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
-    font-size: 3.5rem;
-    line-height: 6.5vh;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.15;
 }
 
 .heading-text span
@@ -395,8 +507,8 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
 .blue-box
 {  
     animation: slideUp3 1s ease-out forwards;
-    width: 90%;
-    height: 110px;
+    width: 70%;
+    height: 120px;
      background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #3baae3);
      border-radius: 20px;
                                                      /*--EXTRA---------------------------------------------------------------------------------------------*/
@@ -537,14 +649,14 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
 }
 .heroD {
             width: 100%;
-    padding: 0px 120Px;
+    padding: 0px 4vw;
             display: flex;
-            flex-direction: column; /* Default to column for small screens */
+            flex-direction: row; /* Default to column for small screens */
             /* justify-content: space-between; */
             align-items: flex-start;
-            
+            gap: 40px;
             margin-bottom: 10vh;
-            max-width: 1200px; /* Max width to prevent it from stretching too wide */
+            max-width: none; /* Max width to prevent it from stretching too wide */
             /* margin-left: auto; 
             margin-right: auto;  */
         }
@@ -638,7 +750,8 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
 {
     padding-left: 0.5vw;
     border-left: 3px solid red;
-    width: 20%;
+    width: 25%;
+    flex-shrink: 0;
 }
         /* Styling for individual images within the wrapper */
         .heroD-wrapper img {
@@ -651,32 +764,193 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
         }
 
         /* Media query for larger screens (e.g., tablets and desktops) */
-        @media (min-width: 768px) {
-            .heroD {
-                flex-direction: row; /* Switch to row layout for larger screens */
-                padding: 0 80px; /* Adjust horizontal padding for larger screens */
-                /* gap: 50px;  */
-            }
+        /* --- MOBILE (Max width 768px) --- */
+        
+@media (max-width: 768px) {
+  
+  /* Adjust main container and hero section margins/paddings */
+  .container-wrapper {
+    margin-top: 2vh; 
+    width: 100vw;
+    padding: 0 10px; /* Add slight horizontal padding to wrapper */
+  }
+  .container1 {
+    border-radius: 20px; /* Smaller corner radius */
+  }
+  
+  /* Hero A (Header/Toggle) */
+  .heroA {
+    width: 98%;
+    padding: 0 10px;
+  }
+  .switch {
+    transform: scale(0.9); /* Scale down the toggle */
+    margin-top: 10px;
+  }
+  
+  /* Hero B - Stack the two main columns */
+  .heroB {
+    margin-top: 4vh;
+    padding: 0 20px;
+  }
+  .heroB-box1 {
+    flex-direction: column; 
+    gap: 30px;
+  }
+  .left1, .right1 {
+    width: 100%; /* Both take full width */
+    padding: 0;
+  }
+  
+  /* Heading text and paragraph adjustments */
+  .heading h1 {
+    font-size: 2.5rem; /* Ensure it doesn't get too small */
+    line-height: 1.2;
+  }
+  .heading-para {
+    width: 100%;
+  }
 
-            .heroD-sample p {
-                font-size: 2rem; /* Larger font size for desktop */
-                text-align: left; /* Align text left on larger screens */
-                width: auto; /* Allow content to dictate width */
-            }
+  /* Right Side Adjustments for mobile */
+  .right1-top {
+    flex-direction: column-reverse; /* Stack image on top of text/icons */
+    gap: 10px;
+    background-color: transparent; /* Remove white background */
+    padding: 0;
+    box-shadow: none;
+  }
+  .right1-top-left {
+    width: 100%;
+    padding: 15px; /* Add some padding to the container */
+    border-radius: 20px; 
+    background-color: #fff; /* Add back white background here */
+  }
+  .right1-top-right {
+    width: 100%;
+    height: 300px; /* Give the image a fixed height on mobile */
+  }
+  .progIcons {
+    transform: scale(1); /* Reset scale */
+    justify-content: space-between; /* Better icon spacing */
+    width: 100%;
+  }
+  .progIcons img {
+    width: 35px;
+    height: 35px;
+  }
+  #oracle, #bootstrap, #springBoot, #react {
+    width: 45px;   
+    height: 45px;
+    padding: 0;
+  }
+  #oracle { width: 60px; }
+  #java { width: 35px; padding-right: 0;}
+  
+  /* Right Bottom - Stack blue box and social icons */
+  .right1-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+  .blue-box, .social-icons {
+    width: 100%; 
+  }
+  .social-icons {
+    grid-template-columns: repeat(6, 1fr); /* 6 icons across the bottom */
+    gap: 5px; /* Smaller gap */
+    padding: 10px 0;
+  }
 
-            .heroD-wrapper {
-                grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-                gap: 30px; /* Maintain equal gap for 2 columns */
-                width: 75%; /* Give more space to images relative to text */
-            }
+  /* Hero C - Services: Stack sidebar and options */
+  .heroC {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+  }
+  .assist-sidebar, .assist-options {
+    width: 100%;
+  }
+  .assist-options {
+    grid-template-columns: 1fr; /* Single column layout for services */
+  }
+  
+  /* Hero D - Works: Adjust grid for one column */
+  .heroD {
+    padding: 0 20px;
+  }
+  .heroD-wrapper {
+    grid-template-columns: 1fr; /* Single column work samples */
+  }
+
+  /* Footer */
+  .container2 {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  /* Floating Email Icon */
+  .side-icons {
+    bottom: 5vw;
+    right: 5vw;
+  }
+}
+
+/* --- Tiny Phone (Max width 480px) --- */
+@media (max-width: 480px) {
+    .heading h1 {
+  font-size: 2rem;
+    }
+    .assist-sidebar aside p {
+      font-size: 1.5rem;
         }
+    
+    .assist-box {
+    min-height: 140px;
+    }
 
+    .social-icons {
+      grid-template-columns: repeat(3, 1fr); /* Back to 3 columns to prevent icons from being too small */
+    }
+    
+    .gmail-icon {
+      width: 50px;
+      height: 50px;
+    }
+}
         /* Even larger screens for slightly more padding */
-        @media (min-width: 1024px) {
-            .heroD {
-                padding: 0 120px; /* Original padding for very large screens */
-            }
-        }
+       @media (max-width: 1024px) {
+ .container-wrapper {
+ width: 95vw; /* Slightly wider wrapper */
+ }
+ 
+ /* Adjust Hero B padding */
+ .heroB {
+  padding: 0 3vw;
+ }
+
+ /* Adjust Hero C padding and switch to a single column for the main content boxes */
+ .heroC {
+  padding: 0 3vw;
+ }
+ .assist-options {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ }
+ 
+ /* Adjust Hero D padding */
+ .heroD {
+  padding: 0 3vw;
+  flex-direction: column; /* Stack the 'My Works' text and the grid */
+  gap: 20px; /* Smaller gap when stacked */
+ }
+ .heroD-sample, .heroD-wrapper {
+  width: 100%; /* Both elements take full width */
+ }
+ 
+ /* Right side smaller icons */
+ .social-icons img {
+ width: 2.8rem;
+  height: 2.8rem;
+ }
+}
 
   
 /* ============== */
@@ -686,53 +960,54 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
 .heroC
 {
     width: 100%;
-    padding: 0px 120Px;
+    padding: 0px 4vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     padding-bottom: 6vh;
-    /* gap: 3vw; */
+    gap: 40px;
 }
 
 .assist-sidebar
 {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     /* justify-content: start; */
     align-items: flex-start;
-    width: 20%;
+    width: 25%;
     padding-top: 0px;
     padding-bottom: 0px;
     /* font-size: 2rem; */
 }
 .assist-sidebar aside p { /* More specific selector to ensure it overrides */
     font-family: 'DM Sans', sans-serif; /* Keep your preferred font */
-    font-size: 2rem; /* Make it prominently large, adjust as needed */
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Make it prominently large, adjust as needed */
     font-weight: 500; /* Bold */
     color: #1a1a1a; /* Dark text */
     line-height: 1.2; /* Good for multi-line headings */
     margin: 0; /* Remove any default paragraph margins that might push it */
     padding: 0; /* Remove any default paragraph padding */
     border-left: 3px solid red;
-    width: 70%;
-    padding-left: 0.5vw;
+    width: 100%;
+    padding-left: 0.5rem;
 }
 
 .assist-options
 {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     align-items: start;
-    width: 80%;
+    width: 75%;
 }
 .assist-box
 {
     cursor: pointer;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-     width: 90%;
-    height: 15vh;
+     width: 100%;
+    height: auto;
     min-height: 150px;
      background: white;
      border-radius: 20px;
@@ -861,7 +1136,7 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
         {
             display: flex;
             flex-direction: row;
-            gap: 1vw;
+            gap: 1rem;
         }
 /* From Uiverse.io by adamgiebl */ 
 .cssbuttons-io-button {
@@ -919,12 +1194,14 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
 }
 
 .container-wrapper {
-  position: relative; /* Crucial for positioning container2 relative to this wrapper */
-  width: 70vw; /* Match container1's width */
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 8vh; /* Start wrapper where container1 starts */
-  margin-bottom: 35vh; /* Adjust as needed for overall spacing */
+   position: relative;
+   /* Changed to max-width to constrain size on HUGE screens, but lets it be smaller than 70vw on small screens */
+   width: 90vw; 
+   max-width: 1200px; /* Max width for desktop content */
+   margin-left: auto;
+ margin-right: auto;
+  margin-top: 5vh; /* Reduced initial margin-top */
+   margin-bottom: 35vh; 
 }
 
 .container2 {
