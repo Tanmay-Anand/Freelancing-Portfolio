@@ -1081,10 +1081,11 @@ button:hover::before {
     
     /* Adjust main container and hero section margins/paddings */
     .container-wrapper {
-        margin-top: 2vh; 
+        margin-top: 0vh;
         width: 100vw;
         padding: 0 10px; /* Add slight horizontal padding to wrapper */
     }
+    
     .container1 {
         border-radius: 20px; /* Smaller corner radius */
     }
@@ -1097,13 +1098,45 @@ button:hover::before {
     .switch {
         transform: scale(0.9); /* Scale down the toggle */
         margin-top: 10px;
+        --_switch-padding: 2px;
+        --_label-padding: 0.8rem 1.7rem;
     }
+
     
+    /*Available Box*/
+    .available-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    padding: 5px 5px;
+    gap: 0.5rem;
+    background-color: #94d2bd;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    animation: float2 5s infinite linear;
+    }
+
+    .available-box p {
+    font-family: 'Inter';
+    font-size: 0.7rem;
+    color: #4c959e;
+    }
+
+    .available-box img {
+    width: 8px;
+    height: 8px;
+    }
+
+
     /* Hero B - Stack the two main columns */
     .heroB {
         margin-top: 4vh;
+        gap: 5vh;
         padding: 0 20px;
     }
+    
     .heroB-box1 {
         flex-direction: column; 
         gap: 30px;
@@ -1141,9 +1174,19 @@ button:hover::before {
         height: 300px; /* Give the image a fixed height on mobile */
     }
     .progIcons {
+        padding-top: 4%;
+        padding-left: 25px;
         transform: scale(1); /* Reset scale */
-        justify-content: space-between; /* Better icon spacing */
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
         width: 100%;
+    }
+    #java {
+        scale: 1.5;
+    }
+    #oracle {
+        scale: 1.2;
     }
     .progIcons img {
         width: 35px;
@@ -1156,6 +1199,13 @@ button:hover::before {
     }
     #oracle { width: 60px; }
     #java { width: 35px; padding-right: 0;}
+    #bootstrap {
+        scale: 0.7;
+    }
+    #springBoot {
+        scale: 0.8;
+    }
+    
     
     /* Right Bottom - Stack blue box and social icons */
     .right1-bottom {
@@ -1166,6 +1216,7 @@ button:hover::before {
         width: 100%; 
     }
     .social-icons {
+        justify-items: center;
         grid-template-columns: repeat(6, 1fr); /* 6 icons across the bottom */
         gap: 5px; /* Smaller gap */
         padding: 10px 0;
@@ -1180,20 +1231,33 @@ button:hover::before {
     .assist-sidebar, .assist-options {
         width: 100%;
     }
+    
     .assist-options {
         grid-template-columns: 1fr; /* Single column layout for services */
     }
     
     /* Hero D - Works: Adjust grid for one column */
     .heroD {
-        padding: 0 20px;
+        padding: 50px 20px 0px 20px;
+        /* padding: 30px 20px; */
     }
     .heroD-wrapper {
         grid-template-columns: 1fr; /* Single column work samples */
     }
-  
+    .heroD-sample p {
+    margin: 0;
+    padding: 0;
+    color: #1a1a1a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
     /* Footer */
     .container2 {
+        left: 10px;  /* Start 10px from the left (matching wrapper padding) */
+        right: 11px; /* End 10px from the right (matching wrapper padding) */
+        width: auto;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
     }
