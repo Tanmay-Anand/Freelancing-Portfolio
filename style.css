@@ -1,683 +1,702 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap");
+/* ===================================================================
+   TABLE OF CONTENTS
+   ===================================================================
+   
+   1. IMPORTS
+   2. GLOBAL STYLES
+   3. LAYOUT CONTAINERS
+   4. PAGE SECTION: HERO A (HEADER)
+   5. PAGE SECTION: HERO B (INTRO)
+   6. PAGE SECTION: HERO C (SERVICES)
+   7. PAGE SECTION: HERO D (PROJECTS)
+   8. COMPONENTS
+      - Switch Toggle
+      - IO Button
+      - Side Icons (Floating Email)
+   9. KEYFRAMES
+  10. MEDIA QUERIES (RESPONSIVE)
+  
+=================================================================== */
 
+/* ==========================
+   1. IMPORTS
+   ========================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+/* ==========================
+   2. GLOBAL STYLES
+   ========================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* transition: 1s ease-in linear; */
-    
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    /* background-color: #d5ebff  ; */
-     width: 100%;
-  height: 100%;
-  background: radial-gradient(
-   125% 125% at -2% 101%,
-  #a35a2c 10.5%,     /* warm cocoa */
-  #d28f5d 25%,       /* muted tan */
-  #e5b174 40%,       /* amber sand */
-  #d4cec4 60%,       /* soft bone white */
-  #9bb5c2 80%,       /* desaturated blue-gray */
-  #6299ad 100%       /* slate blue */
-  );
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    /* padding: 6rem; */
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(
+        125% 125% at -2% 101%,
+        #a35a2c 10.5%,     /* warm cocoa */
+        #d28f5d 25%,       /* muted tan */
+        #e5b174 40%,       /* amber sand */
+        #d4cec4 60%,       /* soft bone white */
+        #9bb5c2 80%,       /* desaturated blue-gray */
+        #6299ad 100%       /* slate blue */
+    );
+}
+
+/* Base button style (from Uiverse.io by BHARGAVPATEL1244) */
+button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 15px;
+    margin: 0;
+    outline: none;
+    border: none;
+    border-radius: 500px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #53b4e6;
+    color: ghostwhite;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+}
+
+button span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+}
+
+button:hover span {
+    color: black;
+}
+
+button::before,
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+button::before {
+    background: #000;
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+button:hover::before {
+    transform: translate3d(100%, 0, 0);
+}
+
+/* ==========================
+   3. LAYOUT CONTAINERS
+   ========================== */
+
+.container-wrapper {
+    position: relative;
+    width: 90vw; 
+    max-width: 1200px; /* Max width for desktop content */
+    margin: 5vh auto 35vh auto; 
 }
 
 .container1 {
-  gap: 2vh;
-  /* width: 65vw; */
-  width: 100%;
-  padding-top: 3vh;
-  padding-bottom: 50px;
-  max-width: 100%;
-  padding-top: 3vh;
-  padding-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 8vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
-              0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border-radius: 40px;
-  background-color: rgba(239, 239, 239, 0.6); /* slight transparency */
-  position: relative;
-  z-index: 2;
-  box-sizing: border-box;
-  background-color: rgba(239, 239, 239, 0.6);
-backdrop-filter: blur(42px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 100%;
+    margin: 8vh auto 0 auto;
+    padding-top: 3vh;
+    padding-bottom: 50px;
+    gap: 2vh;
+    background-color: rgba(239, 239, 239, 0.6);
+    backdrop-filter: blur(42px);
+    border-radius: 40px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
 }
 
+.container2 {
+    position: absolute;
+    top: calc(100% - 40px); /* Overlaps bottom of container1 */
+    left: 0;
+    z-index: 1; /* Below container1 */
+    width: 100%;
+    padding: 80px 20px 20px 20px;
+    background-color: #111111;
+    color: #f0f0f0;
+    text-align: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-heading {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    margin: 0;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b0c4de;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #e0f2f7;
+}
+
+.contact-link .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.Source-code {
+    margin-top: 25px;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.Source-code a {
+    color: #707070;
+    font-size: 0.9rem;
+}
+
+.Source-code a:hover {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* ==========================
+   4. PAGE SECTION: HERO A (HEADER)
+   ========================== */
 
 .heroA {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
     /* position: sticky; */
-    top: 2vh; /* This is crucial: it defines where it sticks */
-    z-index: 1000; /* Ensures it stays on top of other content when sticky */
-    margin-top: 4vh;
-    margin-left: auto;
-    margin-right: auto;
-    /* background-color: rgb(255, 255, 255,0.4);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    height: 6vh;
-    border-radius: 20px;
+    top: 2vh;
+    z-index: 1000;
     width: 95%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center; 
-  align-items: center; /* Optional: vertically center the images */
-  padding: 0 20px 0 5px;      /* Optional: spacing from edges */
+    height: 6vh;
+    margin: 4vh auto 0 auto;
+    padding: 0 20px 0 5px;
+    border-radius: 20px;
 }
 
-.logo
-{
+.logo {
+    width: 150px;
+    height: 6vh;
+    object-fit: contain;
     cursor: pointer;
-    width: 150px;     /* or 24px, 40px, etc. depending on how small you want it */
-  height: 6vh;
-  object-fit: contain;
-}
-.menu
-{
-  width: 30px;     /* or 24px, 40px, etc. depending on how small you want it */
-  height: 30px;
-  object-fit: contain;
-  cursor: pointer; 
-        transition: transform 0.2s ease-in-out;
-}
-.menu:hover
-{
-  transform: scale(1.15);
-}
-/* From Uiverse.io by cbolson */ 
-.switch {
-  --_switch-bg-clr: #70a9c5;
-  --_switch-padding: 4px; /* padding around button*/
-  --_slider-bg-clr: rgba(12, 74, 110, 0.65); /* slider color unchecked */
-  --_slider-bg-clr-on: rgba(12, 74, 110, 1); /* slider color checked */
-  --_slider-txt-clr: #ffffff;
-  --_label-padding: 1rem 2rem; /* padding around the labels -  this gives the switch it's global width and height */
-  --_switch-easing: cubic-bezier(
-    0.47,
-    1.64,
-    0.41,
-    0.8
-  ); /* easing on toggle switch */
-  color: white;
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  border-radius: 9999px;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  position: relative;
-  isolation: isolate;
 }
 
-.switch input[type="checkbox"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-.switch > span {
-  display: grid;
-  place-content: center;
-  transition: opacity 300ms ease-in-out 150ms;
-  padding: var(--_label-padding);
-}
-.switch::before,
-.switch::after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
-  transition: inset 150ms ease-in-out;
-}
-/* switch slider */
-.switch::before {
-  background-color: var(--_slider-bg-clr);
-  inset: var(--_switch-padding) 50% var(--_switch-padding)
-    var(--_switch-padding);
-  transition:
-    inset 500ms var(--_switch-easing),
-    background-color 500ms ease-in-out;
-  z-index: -1;
-  box-shadow:
-    inset 0 1px 1px rgba(0, 0, 0, 0.3),
-    0 1px rgba(255, 255, 255, 0.3);
-}
-/* switch bg color */
-.switch::after {
-  background-color: var(--_switch-bg-clr);
-  inset: 0;
-  z-index: -2;
-}
-/* switch hover & focus */
-.switch:focus-within::after {
-  inset: -0.25rem;
-}
-.switch:has(input:checked):hover > span:first-of-type,
-.switch:has(input:not(:checked)):hover > span:last-of-type {
-  opacity: 1;
-  transition-delay: 0ms;
-  transition-duration: 100ms;
-}
-/* switch hover */
-.switch:has(input:checked):hover::before {
-  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
-    45%;
-}
-.switch:has(input:not(:checked)):hover::before {
-  inset: var(--_switch-padding) 45% var(--_switch-padding)
-    var(--_switch-padding);
-}
-/* checked - move slider to right */
-.switch:has(input:checked)::before {
-  background-color: var(--_slider-bg-clr-on);
-  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
-    50%;
-}
-/* checked - set opacity */
-.switch > span:last-of-type,
-.switch > input:checked + span:first-of-type {
-  opacity: 0.75;
-}
-.switch > input:checked ~ span:last-of-type {
-  opacity: 1;
+.menu {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    cursor: pointer; 
+    transition: transform 0.2s ease-in-out;
 }
 
+.menu:hover {
+    transform: scale(1.15);
+}
+
+/* ==========================
+   5. PAGE SECTION: HERO B (INTRO)
+   ========================== */
 
 .heroB {
-    /* margin-top: 8vh; */
+    display: flex;
+    flex-direction: column;
     margin: 8vh 0;
     padding: 0 4vw;
-    display: flex;
-    flex-direction: column; /* CHANGE THIS FROM row to column */
-    /* Remove justify-content: space-between; if you want vertical stacking */
-    /* justify-content: space-between; */ /* You might not need this here if you want vertical stacking of sections */
-    gap: 5vh; /* Add some space between heroB-box1 and heroC */
+    gap: 5vh;
 }
 
 .heroB-box1 {
     display: flex;
     flex-direction: row;
     gap: 40px;
-    /* height: 50vh; */ /* REMOVE THIS FIXED HEIGHT */
-    /* justify-content: space-between; */
 }
+
+/* --- Hero B: Left --- */
+
 .left1  {
+    display: flex;
+    flex-direction: column;
     width: 55%;
     padding: 0px;
-    display: flex;
-    flex-direction: column;
     gap: 30px;
-    /* justify-content: space-between; */
 }
-.right1 {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    gap: 2vh;
-    width: 45%;
-    padding: 0;
-}
-.right1-top
-{
-    display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
-}
-.right1-bottom
-{
-  /* justify-content: space-between; */
-  /* gap: 10px; */
-    display: flex;
-    flex-direction: row;
 
-}
-.available-box
-{
-    animation: float2 5s infinite linear;
+.available-box {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: fit-content;
-    /* gap: 10px; */
-    background-color: #94d2bd;   /* deep black or use #000 for pure black */
-    border: none;
     padding: 10px 10px;
-    border-radius: 9999px;       /* pill shape */
-    /* font-style: 'Inter', sans-serif; */
     gap: 0.5rem;
+    background-color: #94d2bd;
+    border: none;
+    border-radius: 9999px;
     cursor: pointer;
+    animation: float2 5s infinite linear;
 }
-@keyframes float2 {
-	0% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
-	50% {
-		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-		transform: translatey(-2.5px);
-	}
-	100% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translatey(0px);
-	}
-}
-.available-box p
-{
+
+.available-box p {
     font-family: 'Inter';
     font-size: 0.9rem;
     color: #4c959e;
 }
-.available-box img
-{
-    
+
+.available-box img {
     width: 10px;
     height: 10px;
 }
-.heading h1
-{
-    font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
+
+.heading h1 {
+    font-family: 'DM Sans', sans-serif;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     line-height: 1.15;
 }
 
-.heading-text span
-{
+.heading-text span {
     color: #c22421;
 }
 
-.heading-para
-{
+.heading-para {
     width: 90%;
-    font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.9rem;
     color: #6b6b6b;
 }
-/* From Uiverse.io by KINGFRESS */ 
-/* From Uiverse.io by BHARGAVPATEL1244 */ 
-button {
- outline: none;
- cursor: pointer;
- border: none;
- padding: 10px 15px;
- margin: 0;
- font-family: inherit;
- font-size: inherit;
- position: relative;
- display: inline-block;
- letter-spacing: 0.05rem;
- font-weight: bold;
- font-size: 17px;
- border-radius: 500px;
- overflow: hidden;
- background: #53b4e6;
- color: ghostwhite;
+
+.btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
-button span {
- position: relative;
- z-index: 10;
- transition: color 0.4s;
+/* --- Hero B: Right --- */
+
+.right1 {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding: 0;
+    gap: 2vh;
 }
 
-button:hover span {
- color: black;
-}
-
-button::before,
-button::after {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- z-index: 0;
-}
-
-button::before {
- content: "";
- background: #000;
- width: 120%;
- left: -10%;
- transform: skew(30deg);
- transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-}
-
-button:hover::before {
- transform: translate3d(100%, 0, 0);
-}
-
-
-
-.right1-top
-{
-    /* animation: slideInFromRight 1.5s ease forwards; */
+.right1-top {
+    display: flex;
+    flex-direction: row;
     background-color: #ffff;
     border-radius: 20px;
 }
-/* @keyframes slideInFromRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-} */
-.right1-top-left
-{
-    animation: slideUp 1s ease-out forwards;
-    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; */
+
+.right1-top-left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    align-content: center;
     width: 40%;
-    
-    /* margin-bottom: 2vh; */
+    animation: slideUp 1s ease-out forwards;
 }
-@keyframes slideUp {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    25% {
-        transform: translateX(80%);
-        opacity: 0;
-    }
-    75% {
-        transform: translateX(50%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
+
 .nameText {
-    font-family: 'DM Sans', sans-serif; /* Correct way to apply font family */
     width: 80%;
+    padding-top: 2.5vh;
+    font-family: 'DM Sans', sans-serif;
     line-height: 3.5vh;
-     padding-top: 2.5vh; /*Removed, handled by parent padding/gap */
-    /* padding-left: 0.5vw; Removed, handled by parent padding */
-    text-align: left; /* Ensure text is left-aligned */
+    text-align: left;
     animation: slideUp 1.5s ease-out forwards;
-    
 }
-.nameText h3
-{
+
+.nameText h3 {
     font-size: 1.9rem;
     font-weight: 500;
 }
-.nameText p
-{
+
+.nameText p {
     color: #898989;
     font-size: 0.9rem;
     font-weight: 400;
 }
-.progIcons
-{
+
+.progIcons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin-right: auto;
+    gap: 10px;
     transform: scale(0.8);
     transform-origin: center;
-    display: flex;
-    margin-right: auto;
-    width: 90%;
-    flex-wrap: wrap; /* allow wrapping to next row */
-    justify-content: center; /* or space-between / flex-start */
-    gap: 10px;
-    
 }
 
-.progIcons img
-{
-    width: 45px;    /*-------------*/ 
+.progIcons img {
+    width: 45px;
     height: 45px;
     object-fit: contain;
 }
 
-#oracle
-{
+#oracle {
     width: 97px;
 }
-#java
-{
-    padding-right: 8px;
+
+#java {
     width: 3.8rem;
     height: 3.8rem;
+    padding-right: 8px;
 }
-#bootstrap, #springBoot, #react
-{
-    /* padding-right: 10px; */
-    padding-left: 10px;
-    
+
+#bootstrap, 
+#springBoot, 
+#react {
     width: 49px;     
     height: 49px;
+    padding-left: 10px;
 }
 
-
-.right1-top-right
-{
+.right1-top-right {
     width: 60%;
     margin: 0px;
-    /* width: 10vw; */
-    /* width: 500%;
-    height: 500%; */
-    
 }
-.right1-top-right img
-{
-    
-box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0, 0, 0.6);
+
+.right1-top-right img {
+    position: relative;
+    z-index: 10;
     width: 100%;
     height: 100%; 
-    object-fit:cover;
+    object-fit: cover;
     border-radius: 20px;
-    position: relative;  /* Or absolute/fixed, depending on layout */
-    z-index: 10;
+    box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), 
+                -25px 0 20px -20px rgba(0, 0, 0, 0.6);
 }
-.right1-bottom
-{
+
+.right1-bottom {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
 }
-.blue-box
-{  
-    animation: slideUp3 1s ease-out forwards;
-    width: 70%;
-    height: 120px;
-     background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #3baae3);
-     border-radius: 20px;
-                                                     /*--EXTRA---------------------------------------------------------------------------------------------*/
+
+.blue-box {
     display: flex;
     flex-direction: column;
+    width: 70%;
+    height: 120px;
     padding: 15px 20px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width/height */
-    overflow: hidden; /* This is crucial for the scrolling effect */
-                                                    /*--EXTRA---------------------------------------------------------------------------------------------*/
-
+    background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #3baae3);
+    border-radius: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    animation: slideUp3 1s ease-out forwards;
 }
 
-.blue-box:hover
-{  
-    transition: 5s ease;
+.blue-box:hover {
     opacity: 0.5;
-     background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #78c6ec);
-     border-radius: 20px;
-                                                     /*--EXTRA---------------------------------------------------------------------------------------------*/                                                    /*--EXTRA---------------------------------------------------------------------------------------------*/
-
+    background: radial-gradient(circle at bottom center, #fffef3, #cce5f6, #78c6ec);
+    transition: 5s ease;
 }
 
-@keyframes slideUp3 {
-    0% {
-        transform: translateX(100%) translateY(-100%);
-        opacity: 0;
-    }
-    25% {
-        transform: translateX(80%) translateY(-80%);
-        opacity: 0;
-    }
-    75% {
-        transform: translateX(50%) translateY(-50%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0) translateY(0);
-        opacity: 1;
-    }
-}
 .articles-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px; /* Space between header and list */
+    margin-bottom: 8px;
     font-family: 'DM Sans', sans-serif;
 }
 
 .articles-header h4 {
-    font-weight: 700;
     color: #0c3e5e;
     font-size: 1rem;
+    font-weight: 700;
 }
 
-/* The viewport that clips the scrolling list */
-/* .articles-viewport {
-    flex-grow: 1;
-    position: relative;
-} */
-
-/* The list that will be animated */
-/* .article-list {
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    width: 100%;
-    
-} */
-
 .article-list li {
-    height: 25px; /* Each article gets this much height */
     display: flex;
     align-items: center;
+    height: 25px;
 }
 
 .article-list li a {
-    text-decoration: none;
+    width: 100%;
     color: #0b4a6f;
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
-    white-space: nowrap; /* Prevents long titles from wrapping */
+    text-decoration: none;
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Adds '...' if title is too long */
-    width: 100%;
+    text-overflow: ellipsis;
     transition: color 0.3s ease;
 }
 
 .article-list li a:hover {
+    color: #c22421;
     font-weight: 700;
-    color: #c22421; /* Highlight color on hover */
 }
-                                                    /*--EXTRA---------------------------------------------------------------------------------------------*/
+
 .social-icons {
-    animation: slideUp2 1s ease-out forwards;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap: 20px;
     justify-content: center;
-}
-@keyframes slideUp2 {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    25% {
-        transform: translateY(-80%);
-        opacity: 0;
-    }
-    75% {
-        transform: translateY(-50%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    gap: 20px;
+    animation: slideUp2 1s ease-out forwards;
 }
 
 .social-icons img {
     width: 3.2rem;
     height: 3.2rem;
-    object-fit: contain;
+    padding: 8px;
     background-color: white;
     border-radius: 50%;
-    padding: 8px;
+    object-fit: contain;
     cursor: pointer;
     transition: padding 0.1s ease-in-out;
 }
+
 .social-icons img:hover {
-    transition: 0.5s;
     width: 3.2rem;
     height: 3.2rem;
-    /* object-fit:fill; */
-    /* background-color: white; */
-    border-radius: 50%;
-    padding: 0px; 
+    padding: 0px;
+    transition: 0.5s;
 }
+
+/* ==========================
+   6. PAGE SECTION: HERO C (SERVICES)
+   ========================== */
+
+.heroC {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0px 4vw 6vh 4vw;
+    gap: 40px;
+}
+
+.assist-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    width: 25%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.assist-sidebar aside p {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-left: 0.5rem;
+    color: #1a1a1a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    border-left: 3px solid red;
+}
+
+.assist-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    width: 75%;
+    gap: 20px;
+}
+
+.assist-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+    padding: 20px; 
+    background: white;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.assist-box:hover {
+    transform: translateY(-8px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+                rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+                rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;    
+}
+
+.assist-box-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.assist-box-top-left {
+    flex-shrink: 0;
+}
+
+.assist-box-top img {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 10px;
+    background-color: #dedbfc;
+    border-radius: 50%;
+    object-fit: contain;
+    cursor: pointer;
+    transition: padding 0.1s ease-in-out;
+}
+
+.assist-box:hover .assist-box-top img {
+    background-color: #c7b0f0;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(175, 150, 220, 0.5);
+}
+
+.assist-box-top-right p {
+    color: #6b6b6b;
+    font-size: 0.87rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.assist-box:hover .assist-box-top-right p {
+    color: #333;
+}
+
+.assist-box-bottom {
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
+}
+
+.assist-box:hover .assist-box-bottom .bottom-heading {
+    color: #007bff;
+    font-weight: 600;
+}
+
+/* ==========================
+   7. PAGE SECTION: HERO D (PROJECTS)
+   ========================== */
+
 .heroD {
-            width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 10vh;
     padding: 0px 4vw;
-            display: flex;
-            flex-direction: row; /* Default to column for small screens */
-            /* justify-content: space-between; */
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 10vh;
-            max-width: none; /* Max width to prevent it from stretching too wide */
-            /* margin-left: auto; 
-            margin-right: auto;  */
-        }
+    gap: 40px;
+}
+
+.heroD-sample {
+    width: 25%;
+    flex-shrink: 0;
+    padding-left: 0.5vw;
+    border-left: 3px solid red;
+}
+
+.heroD-sample p {
+    margin: 0;
+    padding: 0;
+    color: #1a1a1a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.heroD-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%;
+    gap: 2rem;
+}
+
 .hero-img {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 14px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    /* border: 5px solid #fff; */
     transition: transform 0.3s ease;
 }
+
 .hero-img:hover {
     transform: scale(1.05);
     box-shadow: rgb(38, 57, 77) 0px 30px 50px -10px;
 }
+
 .hero-img img {
+    display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
-    display: block;
     transition: transform 0.3s ease;
 }
 
@@ -727,599 +746,481 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.6), -25px 0 20px -20px rgba(0, 0
     font-style: italic;
     font-weight: 300;
 }
-        /* Styling for the "Sample Projects" text */
-        .heroD-sample p {
-           font-family: 'DM Sans', sans-serif; /* Keep your preferred font */
-    font-size: 2rem; /* Make it prominently large, adjust as needed */
-    font-weight: 500; /* Bold */
-    color: #1a1a1a; /* Dark text */
-    line-height: 1.2; /* Good for multi-line headings */
-    margin: 0; /* Remove any default paragraph margins that might push it */
-    padding: 0;  /* Center the text on small screens */
-        }
 
-        /* Wrapper for the sample images */
-        .heroD-wrapper {
+.hero-img figcaption span {
+    color: red;
+}
+
+/* ==========================
+   8. COMPONENTS
+   ========================== */
+
+/* --- Component: Switch Toggle (from Uiverse.io by cbolson) --- */
+.switch {
+    --_switch-bg-clr: #70a9c5;
+    --_switch-padding: 4px;
+    --_slider-bg-clr: rgba(12, 74, 110, 0.65);
+    --_slider-bg-clr-on: rgba(12, 74, 110, 1);
+    --_slider-txt-clr: #ffffff;
+    --_label-padding: 1rem 2rem;
+    --_switch-easing: cubic-bezier(0.47, 1.64, 0.41, 0.8);
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    /* margin-top: 2rem; */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: relative;
+    width: fit-content;
+    color: white;
+    border-radius: 9999px;
+    cursor: pointer;
+    isolation: isolate;
 }
-.heroD-sample
-{
-    padding-left: 0.5vw;
-    border-left: 3px solid red;
-    width: 25%;
-    flex-shrink: 0;
-}
-        /* Styling for individual images within the wrapper */
-        .heroD-wrapper img {
-            width: 20vw; /* Image fills its grid cell */
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Remove extra space below image */
-            border-radius: 8px; /* Slightly rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            object-fit: cover; /* Ensure image covers the area, cropping if necessary */
-        }
 
-        /* Media query for larger screens (e.g., tablets and desktops) */
-        /* --- MOBILE (Max width 768px) --- */
-        
-@media (max-width: 768px) {
-  
-  /* Adjust main container and hero section margins/paddings */
-  .container-wrapper {
-    margin-top: 2vh; 
-    width: 100vw;
-    padding: 0 10px; /* Add slight horizontal padding to wrapper */
-  }
-  .container1 {
-    border-radius: 20px; /* Smaller corner radius */
-  }
-  
-  /* Hero A (Header/Toggle) */
-  .heroA {
-    width: 98%;
-    padding: 0 10px;
-  }
-  .switch {
-    transform: scale(0.9); /* Scale down the toggle */
-    margin-top: 10px;
-  }
-  
-  /* Hero B - Stack the two main columns */
-  .heroB {
-    margin-top: 4vh;
-    padding: 0 20px;
-  }
-  .heroB-box1 {
-    flex-direction: column; 
-    gap: 30px;
-  }
-  .left1, .right1 {
-    width: 100%; /* Both take full width */
+.switch input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
-  }
-  
-  /* Heading text and paragraph adjustments */
-  .heading h1 {
-    font-size: 2.5rem; /* Ensure it doesn't get too small */
-    line-height: 1.2;
-  }
-  .heading-para {
-    width: 100%;
-  }
-
-  /* Right Side Adjustments for mobile */
-  .right1-top {
-    flex-direction: column-reverse; /* Stack image on top of text/icons */
-    gap: 10px;
-    background-color: transparent; /* Remove white background */
-    padding: 0;
-    box-shadow: none;
-  }
-  .right1-top-left {
-    width: 100%;
-    padding: 15px; /* Add some padding to the container */
-    border-radius: 20px; 
-    background-color: #fff; /* Add back white background here */
-  }
-  .right1-top-right {
-    width: 100%;
-    height: 300px; /* Give the image a fixed height on mobile */
-  }
-  .progIcons {
-    transform: scale(1); /* Reset scale */
-    justify-content: space-between; /* Better icon spacing */
-    width: 100%;
-  }
-  .progIcons img {
-    width: 35px;
-    height: 35px;
-  }
-  #oracle, #bootstrap, #springBoot, #react {
-    width: 45px;   
-    height: 45px;
-    padding: 0;
-  }
-  #oracle { width: 60px; }
-  #java { width: 35px; padding-right: 0;}
-  
-  /* Right Bottom - Stack blue box and social icons */
-  .right1-bottom {
-    flex-direction: column;
-    align-items: center;
-  }
-  .blue-box, .social-icons {
-    width: 100%; 
-  }
-  .social-icons {
-    grid-template-columns: repeat(6, 1fr); /* 6 icons across the bottom */
-    gap: 5px; /* Smaller gap */
-    padding: 10px 0;
-  }
-
-  /* Hero C - Services: Stack sidebar and options */
-  .heroC {
-    flex-direction: column;
-    padding: 0 20px;
-    gap: 30px;
-  }
-  .assist-sidebar, .assist-options {
-    width: 100%;
-  }
-  .assist-options {
-    grid-template-columns: 1fr; /* Single column layout for services */
-  }
-  
-  /* Hero D - Works: Adjust grid for one column */
-  .heroD {
-    padding: 0 20px;
-  }
-  .heroD-wrapper {
-    grid-template-columns: 1fr; /* Single column work samples */
-  }
-
-  /* Footer */
-  .container2 {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-
-  /* Floating Email Icon */
-  .side-icons {
-    bottom: 5vw;
-    right: 5vw;
-  }
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
-/* --- Tiny Phone (Max width 480px) --- */
-@media (max-width: 480px) {
-    .heading h1 {
-  font-size: 2rem;
-    }
-    .assist-sidebar aside p {
-      font-size: 1.5rem;
-        }
-    
-    .assist-box {
-    min-height: 140px;
-    }
-
-    .social-icons {
-      grid-template-columns: repeat(3, 1fr); /* Back to 3 columns to prevent icons from being too small */
-    }
-    
-    .gmail-icon {
-      width: 50px;
-      height: 50px;
-    }
-}
-        /* Even larger screens for slightly more padding */
-       @media (max-width: 1024px) {
- .container-wrapper {
- width: 95vw; /* Slightly wider wrapper */
- }
- 
- /* Adjust Hero B padding */
- .heroB {
-  padding: 0 3vw;
- }
-
- /* Adjust Hero C padding and switch to a single column for the main content boxes */
- .heroC {
-  padding: 0 3vw;
- }
- .assist-options {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
- }
- 
- /* Adjust Hero D padding */
- .heroD {
-  padding: 0 3vw;
-  flex-direction: column; /* Stack the 'My Works' text and the grid */
-  gap: 20px; /* Smaller gap when stacked */
- }
- .heroD-sample, .heroD-wrapper {
-  width: 100%; /* Both elements take full width */
- }
- 
- /* Right side smaller icons */
- .social-icons img {
- width: 2.8rem;
-  height: 2.8rem;
- }
-}
-
-  
-/* ============== */
-
-/* ============== */
-
-.heroC
-{
-    width: 100%;
-    padding: 0px 4vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 6vh;
-    gap: 40px;
-}
-
-.assist-sidebar
-{
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    /* justify-content: start; */
-    align-items: flex-start;
-    width: 25%;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    /* font-size: 2rem; */
-}
-.assist-sidebar aside p { /* More specific selector to ensure it overrides */
-    font-family: 'DM Sans', sans-serif; /* Keep your preferred font */
-    font-size: clamp(1.5rem, 3vw, 2rem); /* Make it prominently large, adjust as needed */
-    font-weight: 500; /* Bold */
-    color: #1a1a1a; /* Dark text */
-    line-height: 1.2; /* Good for multi-line headings */
-    margin: 0; /* Remove any default paragraph margins that might push it */
-    padding: 0; /* Remove any default paragraph padding */
-    border-left: 3px solid red;
-    width: 100%;
-    padding-left: 0.5rem;
-}
-
-.assist-options
-{
+.switch > span {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    align-items: start;
-    width: 75%;
-}
-.assist-box
-{
-    cursor: pointer;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-     width: 100%;
-    height: auto;
-    min-height: 150px;
-     background: white;
-     border-radius: 20px;
-     padding: 20px; 
-     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s ease-in-out;
-     
-}
-.assist-box:hover
-{
-     transform: translateY(-8px);
-box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-                rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-                rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;    
+    place-content: center;
+    padding: var(--_label-padding);
+    transition: opacity 300ms ease-in-out 150ms;
 }
 
-.assist-box-top
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    gap: 10px;
-}
-.assist-box-top-left
-{
-    /* width: 40%; */
-    flex-shrink: 0;
-}
-.assist-box-top img
-{
-    width: 2.5rem;
-    height: 2.5rem;
-    object-fit: contain; /* Ensure icons don't distort */
-    background-color: #dedbfc;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    transition: padding 0.1s ease-in-out;
-}
-.assist-box:hover .assist-box-top img {
-    background-color: #c7b0f0; /* A slightly darker or different shade on hover */
-    transform: scale(1.1); /* Slightly enlarge the circular background */
-    box-shadow: 0 0 15px rgba(175, 150, 220, 0.5); /* A subtle glow/shadow */
-}
-.assist-box-top-right p
-{
-    font-size: 0.87rem;
-    color: #6b6b6b;
-    transition: color 0.3s ease-in-out;
-}
-.assist-box:hover .assist-box-top-right p {
-    color: #333; /* Darker text color on hover */
-}
-.assist-box-bottom
-{
-    font-size: 1.2rem;
-    font-weight: 500;
-    transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
-}
-.assist-box:hover .assist-box-bottom .bottom-heading {
-    color: #007bff; /* Example: a blue accent color */
-    font-weight: 600; /* Slightly bolder */
+.switch::before,
+.switch::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
 }
 
-.side-icons {
-  position: fixed;
-  bottom: 4vw;
-  right: 4vw;
-  z-index: 1000;
+/* switch slider */
+.switch::before {
+    z-index: -1;
+    background-color: var(--_slider-bg-clr);
+    inset: var(--_switch-padding) 50% var(--_switch-padding) var(--_switch-padding);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3),
+                0 1px rgba(255, 255, 255, 0.3);
+    transition: inset 500ms var(--_switch-easing),
+                background-color 500ms ease-in-out;
 }
 
-.gmail-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background-color: #2f2f2f;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-  cursor: pointer;
-  transition: transform 0.4s ease;
-  animation: float 5s ease-in-out infinite;
-  text-decoration: none;
-  overflow: hidden;
+/* switch bg color */
+.switch::after {
+    z-index: -2;
+    background-color: var(--_switch-bg-clr);
+    inset: 0;
+    transition: inset 150ms ease-in-out;
 }
 
-.gmail-icon img {
-  width: 65%;
-  height: 65%;
+/* switch hover & focus */
+.switch:focus-within::after {
+    inset: -0.25rem;
 }
 
-.gmail-icon:hover {
-  transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9);
+.switch:has(input:checked):hover > span:first-of-type,
+.switch:has(input:not(:checked)):hover > span:last-of-type {
+    opacity: 1;
+    transition-delay: 0ms;
+    transition-duration: 100ms;
 }
 
-.gmail-icon:hover img {
-  transform: scale(1.15);
+.switch:has(input:checked):hover::before {
+    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 45%;
 }
 
-/* Floating animation */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-25px) translateX(-15px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.switch:has(input:not(:checked)):hover::before {
+    inset: var(--_switch-padding) 45% var(--_switch-padding) var(--_switch-padding);
 }
 
+/* checked - move slider to right */
+.switch:has(input:checked)::before {
+    background-color: var(--_slider-bg-clr-on);
+    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 50%;
+}
 
-        .hero-img figcaption span
-        {
-            color: red;
-        }
+/* checked - set opacity */
+.switch > span:last-of-type,
+.switch > input:checked + span:first-of-type {
+    opacity: 0.75;
+}
 
+.switch > input:checked ~ span:last-of-type {
+    opacity: 1;
+}
 
-        .btn-wrapper
-        {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-        }
-/* From Uiverse.io by adamgiebl */ 
+/* --- Component: IO Button (from Uiverse.io by adamgiebl) --- */
 .cssbuttons-io-button {
-  background: #a370f0;
-  color: white;
-  font-family: inherit;
-  padding: 0.35em;
-  padding-left: 1.2em;
-  font-size: 17px;
-  font-weight: 500;
-  border-radius: 9999px;
-  border: none;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  box-shadow: inset 0 0 1.6em -0.6em #714da6;
-  overflow: hidden;
-  position: relative;
-  height: 2.8em;
-  padding-right: 3.3em;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 2.8em;
+    padding: 0.35em 3.3em 0.35em 1.2em;
+    background: #a370f0;
+    color: white;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 9999px;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .cssbuttons-io-button .icon {
-  background: white;
-  margin-left: 1em;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.2em;
-  width: 2.2em;
-  border-radius: 9999px;
-  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
-  right: 0.3em;
-  transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0.3em;
+    width: 2.2em;
+    height: 2.2em;
+    margin-left: 1em;
+    background: white;
+    border-radius: 9999px;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    transition: all 0.3s;
 }
 
 .cssbuttons-io-button:hover .icon {
-  width: calc(100% - 0.6em);
+    width: calc(100% - 0.6em);
 }
 
 .cssbuttons-io-button .icon svg {
-  width: 1.1em;
-  transition: transform 0.3s;
-  color: #7b52b9;
+    width: 1.1em;
+    color: #7b52b9;
+    transition: transform 0.3s;
 }
 
 .cssbuttons-io-button:hover .icon svg {
-  transform: translateX(0.1em);
+    transform: translateX(0.1em);
 }
 
 .cssbuttons-io-button:active .icon {
-  transform: scale(0.95);
+    transform: scale(0.95);
 }
 
-.container-wrapper {
-   position: relative;
-   /* Changed to max-width to constrain size on HUGE screens, but lets it be smaller than 70vw on small screens */
-   width: 90vw; 
-   max-width: 1200px; /* Max width for desktop content */
-   margin-left: auto;
- margin-right: auto;
-  margin-top: 5vh; /* Reduced initial margin-top */
-   margin-bottom: 35vh; 
+/* --- Component: Side Icons (Floating Email) --- */
+.side-icons {
+    position: fixed;
+    bottom: 4vw;
+    right: 4vw;
+    z-index: 1000;
 }
 
-.container2 {
-  position: absolute;
-  top: calc(100% - 40px); /* This is the magic! 100% is bottom of container1, 40px is border-radius */
-  left: 0;
-  width: 100%; /* Match container1's width */
-  background-color: #111111; /* Different color to distinguish */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border-bottom-left-radius: 40px; /* Match container1's bottom radius */
-  border-bottom-right-radius: 40px; /* Match container1's bottom radius */
-  z-index: 1; /* Ensure container2 is below container1 */
-  padding: 20px;
-  padding-top: 80px;
-  box-sizing: border-box;
-  color: #f0f0f0;
-  text-align: center; 
-  
-}
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally within flex container */
+.gmail-icon {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    align-content: center;
-    gap: 15px; /* Spacing between sections */
-    align-items: center;
-  }
+    width: 60px;
+    height: 60px;
+    background-color: #2f2f2f;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+    animation: float 5s ease-in-out infinite;
+}
 
-  .footer-heading {
-    font-size: 1.5rem; /* Larger heading */
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #ffffff;
-  }
+.gmail-icon img {
+    width: 65%;
+    height: 65%;
+}
 
-  .contact-list {
-    list-style: none; /* Remove bullet points */
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Stack contact items */
-    gap: 10px; /* Space between each contact item */
-    align-items: center;
-  }
+.gmail-icon:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9);
+}
 
-  .contact-list li {
-    margin: 0;
-  }
+.gmail-icon:hover img {
+    transform: scale(1.15);
+}
 
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Space between icon and text */
-    color: #b0c4de; /* Softer light color for links */
-    text-decoration: none; /* Remove underline */
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-  }
+/* ==========================
+   9. KEYFRAMES
+   ========================== */
 
-  .contact-link:hover {
-    color: #e0f2f7; /* Lighter color on hover */
-  }
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-25px) translateX(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
-  .contact-link .icon {
-    width: 24px;
-    height: 24px;
-  }
+@keyframes float2 {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-2.5px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
 
-  .Source-code {
-    margin-top: 25px;
-    font-size: 0.9rem;
-    color: #a0a0a0;
-    align-items: center;
-  }
-  .Source-code a
-  {
-    font-size: 0.9rem;
-    color: #707070;
-  }
-  .Source-code a:hover {
+@keyframes slideUp {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateX(80%);
+        opacity: 0;
+    }
+    75% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp2 {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateY(-80%);
+        opacity: 0;
+    }
+    75% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp3 {
+    0% {
+        transform: translateX(100%) translateY(-100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateX(80%) translateY(-80%);
+        opacity: 0;
+    }
+    75% {
+        transform: translateX(50%) translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================
+   10. MEDIA QUERIES (RESPONSIVE)
+   ========================== */
+
+/* --- Tablet (Max width 1024px) --- */
+@media (max-width: 1024px) {
+    .container-wrapper {
+        width: 95vw; /* Slightly wider wrapper */
+    }
     
-    font-size: 0.9rem;
-    color: #ffffff;
-    font-weight: 700;
-  }
-        /* .resume
-        {
-            border: 2px solid black;
-            display: flex;
-            flex-direction: row;
-            gap: 1vw;
-            align-items: center;
-            padding: 10px 15px;
-            font-size: 17px;
-             border-radius: 500px;
-        }
+    /* Adjust Hero B padding */
+    .heroB {
+        padding: 0 3vw;
+    }
+   
+    /* Adjust Hero C padding and switch to a single column for the main content boxes */
+    .heroC {
+        padding: 0 3vw;
+    }
+    .assist-options {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    /* Adjust Hero D padding */
+    .heroD {
+        flex-direction: column; /* Stack the 'My Works' text and the grid */
+        padding: 0 3vw;
+        gap: 20px; /* Smaller gap when stacked */
+    }
+    .heroD-sample, 
+    .heroD-wrapper {
+        width: 100%; /* Both elements take full width */
+    }
+    
+    /* Right side smaller icons */
+    .social-icons img {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+}
 
-        .resume img
-        {
-             width: 45px;   
-             height: 45px;
-        } */
-/* .assist-box-bottom 
-{
-    float:left;
+/* --- Mobile (Max width 768px) --- */
+@media (max-width: 768px) {
     
+    /* Adjust main container and hero section margins/paddings */
+    .container-wrapper {
+        margin-top: 2vh; 
+        width: 100vw;
+        padding: 0 10px; /* Add slight horizontal padding to wrapper */
+    }
+    .container1 {
+        border-radius: 20px; /* Smaller corner radius */
+    }
     
-} */
-/* .heroD
-{
+    /* Hero A (Header/Toggle) */
+    .heroA {
+        width: 98%;
+        padding: 0 10px;
+    }
+    .switch {
+        transform: scale(0.9); /* Scale down the toggle */
+        margin-top: 10px;
+    }
     
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    height: 6vh;
-    border-radius: 20px;
-    width: 80%;
-    align-items: center; /* Optional: vertically center the images */
-  /* padding: 0px 120Px;
-  padding-left: 80px; */
+    /* Hero B - Stack the two main columns */
+    .heroB {
+        margin-top: 4vh;
+        padding: 0 20px;
+    }
+    .heroB-box1 {
+        flex-direction: column; 
+        gap: 30px;
+    }
+    .left1, .right1 {
+        width: 100%; /* Both take full width */
+        padding: 0;
+    }
+    
+    /* Heading text and paragraph adjustments */
+    .heading h1 {
+        font-size: 2.5rem; /* Ensure it doesn't get too small */
+        line-height: 1.2;
+    }
+    .heading-para {
+        width: 100%;
+    }
+  
+    /* Right Side Adjustments for mobile */
+    .right1-top {
+        flex-direction: column-reverse; /* Stack image on top of text/icons */
+        gap: 10px;
+        background-color: transparent; /* Remove white background */
+        padding: 0;
+        box-shadow: none;
+    }
+    .right1-top-left {
+        width: 100%;
+        padding: 15px; /* Add some padding to the container */
+        border-radius: 20px; 
+        background-color: #fff; /* Add back white background here */
+    }
+    .right1-top-right {
+        width: 100%;
+        height: 300px; /* Give the image a fixed height on mobile */
+    }
+    .progIcons {
+        transform: scale(1); /* Reset scale */
+        justify-content: space-between; /* Better icon spacing */
+        width: 100%;
+    }
+    .progIcons img {
+        width: 35px;
+        height: 35px;
+    }
+    #oracle, #bootstrap, #springBoot, #react {
+        width: 45px;   
+        height: 45px;
+        padding: 0;
+    }
+    #oracle { width: 60px; }
+    #java { width: 35px; padding-right: 0;}
+    
+    /* Right Bottom - Stack blue box and social icons */
+    .right1-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+    .blue-box, .social-icons {
+        width: 100%; 
+    }
+    .social-icons {
+        grid-template-columns: repeat(6, 1fr); /* 6 icons across the bottom */
+        gap: 5px; /* Smaller gap */
+        padding: 10px 0;
+    }
+  
+    /* Hero C - Services: Stack sidebar and options */
+    .heroC {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 30px;
+    }
+    .assist-sidebar, .assist-options {
+        width: 100%;
+    }
+    .assist-options {
+        grid-template-columns: 1fr; /* Single column layout for services */
+    }
+    
+    /* Hero D - Works: Adjust grid for one column */
+    .heroD {
+        padding: 0 20px;
+    }
+    .heroD-wrapper {
+        grid-template-columns: 1fr; /* Single column work samples */
+    }
+  
+    /* Footer */
+    .container2 {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+  
+    /* Floating Email Icon */
+    .side-icons {
+        bottom: 5vw;
+        right: 5vw;
+    }
+}
+  
+/* --- Tiny Phone (Max width 480px) --- */
+@media (max-width: 480px) {
+    .heading h1 {
+        font-size: 2rem;
+    }
+    .assist-sidebar aside p {
+        font-size: 1.5rem;
+    }
+    .assist-box {
+        min-height: 140px;
+    }
+    .social-icons {
+        grid-template-columns: repeat(3, 1fr); /* Back to 3 columns to prevent icons from being too small */
+    }
+    .gmail-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
